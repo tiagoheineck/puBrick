@@ -11,7 +11,8 @@
 |
 */
 
-
+use App\Profile;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,51 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', 'HomeController@index');
+});
+
+Route::get('login/fb', function() {
+    $facebook = new Facebook(Config::get('facebook'));
+    $params = array(
+        'redirect_uri' => url('/login/fb/callback'),
+        'scope' => 'email',
+    );
+    return Redirect::to($facebook->getLoginUrl($params));
+});
+
+Route::get('login/fb/callback', function() {
+    $code = \Illuminate\Support\Facades\Input::get('code');
+    if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
+
+    $facebook = new Facebook(Config::get('facebook'));
+    $uid = $facebook->getUser();
+
+    if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
+
+    $me = $facebook->api('/me?fields=id,name,email,picture');
+
+    $profile = Profile::whereUid($uid)->first();
+    if (empty($profile)) {
+
+        $user = User::where('email', '=', $me['email'])->first();
+        if (!$user) {
+            $user = new User();
+        }
+
+        $user->name = $me['name'];
+        $user->email = $me['email'];
+        $user->photo = $me['picture']['data']['url'];
+        $user->save();
+
+        $profile = new Profile();
+        $profile->uid = $uid;
+        $profile->username = $me['email'];
+        $profile = $user->profiles()->save($profile);
+    }
+    $profile->access_token = $facebook->getAccessToken();
+    $profile->save();
+
+
+    Auth::login($profile->user);
+
+    return Redirect::to('/')->with('message', 'Logged in with Facebook');
 });
