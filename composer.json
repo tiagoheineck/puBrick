@@ -8,7 +8,9 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/annotations": "5.2.*",
-        "auth0/login": "~3.0"
+        "auth0/login": "~3.0",
+        "facebook/php-sdk": "^3.2",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
