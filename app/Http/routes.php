@@ -41,6 +41,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::group(['middleware' => ['web','auth']], function() {
     Route::get('/new', 'ObraController@getForm');
     Route::post('/new',['as'=>'obra.save' , 'uses'=>'ObraController@save']);
+    Route::get('/proximas/{latitude}/{longitude}','ObraController@proximas');
 });
 
 

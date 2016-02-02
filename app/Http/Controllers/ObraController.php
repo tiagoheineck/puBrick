@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -26,6 +27,17 @@ class ObraController extends Controller
         ]);
     }
 
+    public function proximas(Request $request,$latitude,$longitude)
+    {
+        $variacao = 0.022;
+        $obrasProximas = DB::table('obras')
+            ->select('id','titulo','latitude','longitude','valor','orgao_responsavel')
+            ->whereBetween('latitude',array($latitude-$variacao,$latitude+$variacao))
+            ->whereBetween('longitude',array($longitude-$variacao,$longitude+$variacao))
+            ->get();
+        return response()->json(['data'=>$obrasProximas,'state'=>200])->setCallback($request->input('callback'));
+    }
+
     public function save(Request $request)
     {
         $obra = new Obra($request->input('obra'));
@@ -36,11 +48,7 @@ class ObraController extends Controller
 
         if(Input::file('foto')){
 
-            $fileName = app('foto')->upload(Input::file('foto'));
-            //$file = Input::file('foto');
-            //$fileName = time().$file->getClientOriginalName();
-            //$path = 'foto/';
-            //$file->move($path,$fileName);
+            $fileName = app('foto')->upload(Input::file('foto')); //Aqui está usando um Serviço da arquitetura
             $foto = new Foto(['foto'=>$fileName]);
             $foto->user()->associate(Auth::user());
             $foto->obra()->associate($obra);

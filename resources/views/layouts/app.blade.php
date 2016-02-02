@@ -72,6 +72,7 @@
             </div>
         </div>
     </nav>
+    <!--
     @if (session('mensagem'))
         <div class="row">
             <div class="col-md-12">
@@ -79,7 +80,7 @@
             {{ session('mensagem') }}
         </div></div>
         @endif
-        </div>
+            -->
     @yield('content')
 
 
