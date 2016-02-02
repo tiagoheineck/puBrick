@@ -8,6 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/annotations": "5.2.*",
+        "laravelcollective/html": "5.2.*",
         "auth0/login": "~3.0",
         "doctrine/dbal": "^2.5",
         "laravel/socialite": "^2.0"

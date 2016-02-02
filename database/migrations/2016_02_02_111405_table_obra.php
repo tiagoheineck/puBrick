@@ -16,8 +16,8 @@ class TableObra extends Migration
             $table->increments('id');
             $table->string('orgao');
             $table->string('titulo');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->double('latitude',11,8);
+            $table->double('longitude',11,8);
             $table->decimal('valor',9,2);
             $table->string('empresa_responsavel');
             $table->string('orgao_responsavel');

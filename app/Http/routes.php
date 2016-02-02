@@ -35,6 +35,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
     Route::auth();
     Route::get('/', 'HomeController@index');
+
+});
+
+Route::group(['middleware' => ['web','auth']], function() {
+    Route::get('/new', 'ObraController@getForm');
+    Route::post('/new',['as'=>'obra.save' , 'uses'=>'ObraController@save']);
 });
 
 

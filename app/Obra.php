@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Obra extends Model
 {
 
+    protected $fillable = [
+        'orgao_responsavel', 'titulo', 'valor','empresa_responsavel','esfera','fiscal_obra','data_inicio','data_fim','latitude','longitude'
+    ];
+
+
     public function user()
     {
-       return $this->hasOne('App\User');
+       return $this->belongsTo('App\User');
     }
 
     public function fotos()

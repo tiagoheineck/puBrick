@@ -108,6 +108,8 @@ class AuthController extends Controller
             'avatar' => $facebookUser->avatar
         ])->save();
 
+        $user = User::where('facebook_id', $facebookUser->id)->first();
+
         return $user;
     }
 
