@@ -35,10 +35,12 @@ class ObraController extends Controller
 
 
         if(Input::file('foto')){
-            $file = Input::file('foto');
-            $fileName = time().$file->getClientOriginalName();
-            $path = 'foto/';
-            $file->move($path,$fileName);
+
+            $fileName = app('foto')->upload(Input::file('foto'));
+            //$file = Input::file('foto');
+            //$fileName = time().$file->getClientOriginalName();
+            //$path = 'foto/';
+            //$file->move($path,$fileName);
             $foto = new Foto(['foto'=>$fileName]);
             $foto->user()->associate(Auth::user());
             $foto->obra()->associate($obra);

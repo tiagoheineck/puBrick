@@ -8,10 +8,17 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('javascript')
+    <script src="{!! asset('js/maps.js') !!}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={!! env('GOOGLE_MAPS_KEY') !!}&signed_in=true&callback=initMap"
+            async defer>
+    </script>
 @endsection
