@@ -29,11 +29,14 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
 
+Route::group(['middleware' => 'web'], function () {
+    Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
+    Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::auth();
     Route::get('/', 'HomeController@index');
 });
+
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
@@ -58,10 +61,7 @@ Route::get('login/fb/callback', function() {
     $profile = Profile::whereUid($uid)->first();
     if (empty($profile)) {
 
-        $user = User::where('email', '=', $me['email'])->first();
-        if (!$user) {
-            $user = new User();
-        }
+         $user = new User();
 
         $user->name = $me['name'];
         $user->email = $me['email'];
@@ -76,8 +76,6 @@ Route::get('login/fb/callback', function() {
     $profile->access_token = $facebook->getAccessToken();
     $profile->save();
 
-
     Auth::login($profile->user);
-
-    return Redirect::to('/')->with('message', 'Logged in with Facebook');
+    return redirect('/');
 });

@@ -10,7 +10,7 @@
         "laravelcollective/annotations": "5.2.*",
         "auth0/login": "~3.0",
         "doctrine/dbal": "^2.5",
-        "facebook/php-sdk": "^3.0"
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

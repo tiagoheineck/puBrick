@@ -17,6 +17,11 @@
 
 ### Rodando
 
+Configure seu arquivo .env com o banco de dados e as credenciais do facebook
+
+FACEBOOK_ID=XXXXXXXXXXX
+FACEBOOK_SECRET=XXXXXXXXXXXXXXX
+
 1. Crie um banco de dados com o nome pubrick
 
 2. php artisan migrate
