@@ -25,9 +25,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function profiles()
-    {
-        return $this->hasMany('App\Profile');
-    }
 
 }
