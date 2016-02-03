@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web','auth']], function() {
     Route::post('/comments','ComentarioController@send');
     Route::get('/near/{latitude}/{longitude}','ObraController@proximas');
     Route::get('/view/{id}','ObraController@porId');
+    Route::get('favorite/{id}','FavoritoController@set');
 });
 
 

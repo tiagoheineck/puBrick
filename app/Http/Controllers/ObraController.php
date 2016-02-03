@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Favorito;
 use App\Foto;
 use App\Obra;
 use Faker\Provider\Image;
@@ -57,8 +58,9 @@ class ObraController extends Controller
 
     public function porId($id)
     {
+        $favorito = (Favorito::where('obra_id','=',$id)->where('user_id','=',Auth::user()->id)->get()->first()) ? true : false;
         $obra = Obra::findOrFail($id);
-        return view('obra.timeline',['obra'=>$obra]);
+        return view('obra.timeline',['obra'=>$obra,'favorito'=>$favorito]);
     }
 
 

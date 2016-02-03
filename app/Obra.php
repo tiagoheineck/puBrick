@@ -31,5 +31,10 @@ class Obra extends Model
         return $this->hasMany('App\Denuncia');
     }
 
+    public function favoritos()
+    {
+        return $this->belongsToMany('App\Favorito');
+    }
+
 
 }

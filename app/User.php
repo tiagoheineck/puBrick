@@ -25,5 +25,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function favoritos()
+    {
+        return $this->belongsToMany('App\Obra','favoritos','user_id','obra_id');
+    }
+
 
 }

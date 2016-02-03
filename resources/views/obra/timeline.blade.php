@@ -4,22 +4,27 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>Obra: {{ $obra->titulo }}</h2>
-                {!! Form::open(array('url' => 'comments','file'=>'true','enctype'=>"multipart/form-data")) !!}
-                 <div class="col-md-4">
-                    <input type="hidden" name="obra" value="{{ $obra->id }}">
-                    <label for="foto">Enviar Foto
-                        {{ Form::file('foto','',array('class'=>'form-control','required'=>'required','accept'=>'image/*;capture=camera'))  }}
-                    </label>
-                 </div>
-                 <div class="col-md-6">
-                    <textarea name="comentario" class="form-control" required></textarea>
-                 </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Enviar!</button>
-                </div>
+            <div class="panel">
+                <div class="panel-heading panel-primary">{{ $obra->titulo }}</div>
+                <div class="panel-body">
+                    {!! Form::open(array('url' => 'comments','file'=>'true','enctype'=>"multipart/form-data")) !!}
+                    <div class="col-md-4">
+                        <input type="hidden" name="obra" value="{{ $obra->id }}">
+                        <label for="foto">Enviar Foto
+                            {{ Form::file('foto','',array('class'=>'form-control','required'=>'required','accept'=>'image/*;capture=camera'))  }}
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea name="comentario" class="form-control" required></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Enviar!</button>
+                    </div>
                  {!! Form::close() !!}
-
+                </div>
+            <div class="panel-footer">
+                <a class="btn btn-primary  @if($favorito) {{"btn-success"}} @endif" href="{!! url("/favorite/{$obra->id}") !!}">Favorito</a>
+            </div>
         </div>
         <div class="col-md-9">
             <h3>Histórico</h3>
