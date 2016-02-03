@@ -26,4 +26,9 @@ class FavoritoController extends Controller
         return Redirect::to("/view/{$obra->id}");
     }
 
+    public function lista()
+    {
+        return view('obra.favoritos');
+    }
+
 }

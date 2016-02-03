@@ -24,6 +24,10 @@
                 </div>
             <div class="panel-footer">
                 <a class="btn btn-primary  @if($favorito) {{"btn-success"}} @endif" href="{!! url("/favorite/{$obra->id}") !!}">Favorito</a>
+                <a class="btn btn-danger" href="{!! url("/denounce/{$obra->id}") !!}">Denunciar Abuso</a>
+                @if($obra->denuncias->first())
+                    <span class="label label-danger">Existem denúncias a serem analisadas</span>
+                @endif
             </div>
         </div>
         <div class="col-md-9">
@@ -38,10 +42,14 @@
                             {{ "Anônimo" }}
                         @endif
                          em <span class="badge"> {{$comentario->created_at}}</span>
+                         <a class="btn btn-danger" href="{!! url("/denounce/{$obra->id}/{$comentario->id}") !!}">Denunciar Comentário</a>
+                         @if($comentario->denuncias->first())
+                             <span class="label label-danger">Existem denúncias a serem analisadas</span>
+                         @endif
                     </div>
                     <div class="panel-body">{{ $comentario->texto }}</div>
                     @if($comentario->foto)
-                        <img src="{{ url("foto/{$comentario->foto->foto}") }}" class="img-responsive"> {{ $comentario->user->name }}
+                        <img src="{{ url("foto/{$comentario->foto->foto}") }}" class="img-responsive">
                     @endif
                 </div>
             @endforeach

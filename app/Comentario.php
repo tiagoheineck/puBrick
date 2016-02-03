@@ -22,6 +22,11 @@ class Comentario extends Model
         return $this->belongsTo('App\Foto');
     }
 
+    public function denuncias()
+    {
+        return $this->hasMany('App\Denuncia');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

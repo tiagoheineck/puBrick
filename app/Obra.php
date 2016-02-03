@@ -27,7 +27,7 @@ class Obra extends Model
        return $this->hasMany('App\Comentario')->orderBy('created_at','desc');
     }
 
-    public function denuncia(){
+    public function denuncias(){
         return $this->hasMany('App\Denuncia');
     }
 

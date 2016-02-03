@@ -12,6 +12,11 @@ class Denuncia extends Model
         return $this->belongsTo('App\Obra');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function comentario()
     {
         return $this->belongsTo('App\Comentario');

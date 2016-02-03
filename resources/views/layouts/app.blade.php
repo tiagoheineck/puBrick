@@ -50,6 +50,7 @@
                 <ul class="nav navbar-nav">
                     @if (!Auth::guest())
                     <li><a href="{{ url('/new') }}">Nova Obra</a></li>
+                        <li><a href="{{ url('/favorite') }}">Favoritas</a></li>
                     @endif
                 </ul>
 
