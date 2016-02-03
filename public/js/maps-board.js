@@ -19,7 +19,7 @@ function initMap() {
             //infoWindow.setPosition(pos);
             //infoWindow.setContent('Você!');
             map.setCenter(pos);
-            $.getJSON("/proximas/"+pos.lat+'/'+pos.lng, function(json) {
+            $.getJSON("/near/"+pos.lat+'/'+pos.lng, function(json) {
                 $.each(json.data, function(key, data) {
                     var latLng = new google.maps.LatLng(data.latitude, data.longitude);
                     // Creating a marker and putting it on the map
@@ -28,7 +28,7 @@ function initMap() {
                         position: latLng,
                         map: map,
                         title: 'Obra: ' + data.titulo + ' - Valor' + data.valor,
-                        url: '/obra/'+data.id
+                        url: '/view/'+data.id
                     });
                     google.maps.event.addListener(marker, 'click', function() {
                         window.location.href = this.url;

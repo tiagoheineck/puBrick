@@ -24,7 +24,7 @@
                 <input type="date" name="obra[data_fim]" class="form-control" required>
             </label>
             <label for="data-fim"> Foto
-                {{ Form::file('foto','',array('class'=>'form-control','required'=>'required'))  }}
+                {{ Form::file('foto','',array('class'=>'form-control','required'=>'required','accept'=>'image/*;capture=camera'))  }}
             </label>
             <button type="submit" class="btn btn-primary btn-block">Salvar</button>
             {!! Form::close() !!}

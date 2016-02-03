@@ -38,6 +38,7 @@ class ObraController extends Controller
         return response()->json(['data'=>$obrasProximas,'state'=>200])->setCallback($request->input('callback'));
     }
 
+
     public function save(Request $request)
     {
         $obra = new Obra($request->input('obra'));
@@ -45,17 +46,20 @@ class ObraController extends Controller
 
         $obra->save();
 
-
-        if(Input::file('foto')){
-
-            $fileName = app('foto')->upload(Input::file('foto')); //Aqui está usando um Serviço da arquitetura
-            $foto = new Foto(['foto'=>$fileName]);
-            $foto->user()->associate(Auth::user());
-            $foto->obra()->associate($obra);
-            $foto->save();
+        if(Input::file('foto'))
+        {
+            $foto = app('foto')->uploadObra(Input::file('foto'), $obra); //Aqui está usando um Serviço da arquitetura
         }
+
         return Redirect::to('/')->with('mensagem','Parabéns, mais uma obra que será fiscalizada!');
 
     }
+
+    public function porId($id)
+    {
+        $obra = Obra::findOrFail($id);
+        return view('obra.timeline',['obra'=>$obra]);
+    }
+
 
 }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "65e22abfaf465936455a60b49e1b2485",
-    "content-hash": "a2a976b9fe07e3bcf8f6c7a315d3d470",
+    "hash": "e29b3e2c6a42aa58bf47529a413ac430",
+    "content-hash": "46b5e6960745c5177a14146f0f429d26",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -991,6 +991,68 @@
                 "uri"
             ],
             "time": "2016-01-23 01:23:02"
+        },
+        {
+            "name": "intervention/image",
+            "version": "2.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "9f29360b8ab94585cb9e80cf9045abd5b85feb89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/9f29360b8ab94585cb9e80cf9045abd5b85feb89",
+                "reference": "9f29360b8ab94585cb9e80cf9045abd5b85feb89",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "3.*"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing.",
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.net",
+                    "homepage": "http://olivervogel.net/"
+                }
+            ],
+            "description": "Image handling and manipulation library with support for Laravel integration",
+            "homepage": "http://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "laravel",
+                "thumbnail",
+                "watermark"
+            ],
+            "time": "2016-01-02 19:15:13"
         },
         {
             "name": "jakub-onderka/php-console-color",

@@ -19,12 +19,12 @@ class Obra extends Model
 
     public function fotos()
     {
-       return $this->hasMany('App\Foto');
+       return $this->hasMany('App\Foto')->orderBy('created_at','desc');
     }
 
     public function comentarios()
     {
-       return $this->hasMany('App\Comentario');
+       return $this->hasMany('App\Comentario')->orderBy('created_at','desc');
     }
 
     public function denuncia(){

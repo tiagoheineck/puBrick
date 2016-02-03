@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Obra;
-use Illuminate\Support\Facades\Input;
-use Laravel\Socialite\One\User;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -16,13 +16,29 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Foto
 {
 
-
-    public function upload(UploadedFile $file)
+    public function uploadObra(UploadedFile $file,Obra $obra)
     {
-        $fileName = time().$file->getClientOriginalName();
+            $fileName = $this->saveDisc($file);
+            $this->createThumb($fileName);
+            $foto = new \App\Foto(['foto' => $fileName]);
+            $foto->user()->associate(Auth::user());
+            $foto->obra()->associate($obra);
+            $foto->save();
+            return $foto;
+    }
+
+    private function saveDisc(UploadedFile $file)
+    {
+        $fileName = time() . $file->getClientOriginalName();
         $path = 'foto/';
-        $file->move($path,$fileName);
+        $file->move($path, $fileName);
         return $fileName;
+    }
+
+    private function createThumb($filename)
+    {
+        $patch = 'foto/miniatura/'.$filename;
+        Image::make(public_path('foto/'.$filename))->fit(140,140)->save($patch);
     }
 
 
