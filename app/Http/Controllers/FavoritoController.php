@@ -23,7 +23,7 @@ class FavoritoController extends Controller
         } else {
             Auth::user()->favoritos()->attach($obra);
         }
-        return Redirect::to("/view/{$obra->id}");
+        return Redirect::back();
     }
 
     public function lista()
