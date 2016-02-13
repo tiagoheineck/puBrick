@@ -27,7 +27,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -84,7 +84,10 @@
         </div></div>
         @endif
             -->
+
+    <div class="container fill" style="padding-top:50px;">
     @yield('content')
+    </div>
 
 
     <!-- JavaScripts -->
