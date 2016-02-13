@@ -1,7 +1,21 @@
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 18
+        zoom: 15,
+        disableDefaultUI: true,
+        zoomControl: true,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            mapTypeIds: [
+                google.maps.MapTypeId.ROADMAP,
+                google.maps.MapTypeId.SATELLITE
+            ]
+        },
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false
     });
 
 
@@ -25,12 +39,12 @@ function initMap() {
                 position: myLatlng,
                 map: map,
                 draggable:true,
-                title:"Drag me!"
+                title:"Arraste até o local da Obra",
+                animation: google.maps.Animation.DROP,
             });
             google.maps.event.addListener(marker, 'dragend', function(evt){
                 document.getElementById('latitude').setAttribute("value",evt.latLng.lat());
                 document.getElementById('longitude').setAttribute("value",evt.latLng.lng());
-                console.log(evt.latLng.lat() + evt.latLng.lng());
             });
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());

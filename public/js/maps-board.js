@@ -1,7 +1,21 @@
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 14
+        zoom: 14,
+        disableDefaultUI: true,
+        zoomControl: true,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            mapTypeIds: [
+                google.maps.MapTypeId.ROADMAP,
+                google.maps.MapTypeId.SATELLITE
+            ]
+        },
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false
     });
 
 
@@ -27,7 +41,7 @@ function initMap() {
                     var marker = new google.maps.Marker({
                         position: latLng,
                         map: map,
-                        title: 'Obra: ' + data.titulo + ' - Valor' + data.valor,
+                        title: 'Obra: ' + data.titulo + ' - Valor: ' + data.valor,
                         url: '/view/'+data.id
                     });
                     google.maps.event.addListener(marker, 'click', function() {
