@@ -55,7 +55,9 @@
         </div>
          <div class="col-md-3">
              <h3>Sobre a obra</h3>
+             @if(count($obra->fotos) > 0)
              <img src="{!! url("/foto/miniatura/{$obra->fotos->first()->foto}") !!}" class="img-thumbnail img-responsive">
+             @endif
             <dl>
                 <dt>Órgão Responsável</dt>
                 <dd>{{ $obra->orgao_responsavel }}</dd>
