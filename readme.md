@@ -15,10 +15,14 @@
 2. Rode o comando "composer install" na pasta do projeto
 
 
+### Criando o banco de dados
+
+Acesse o mysql e Crie um banco de dados com o nome **pubrick**
+
 ### Rodando
 
-Configure seu arquivo .env com o banco de dados e as credenciais do facebook
-
+Configure seu arquivo .env com as configuracoes do banco de dados e das credenciais do facebook
+'''
 APP_ENV=local
 APP_DEBUG=true
 APP_KEY=XXXXXXXXXX
@@ -32,9 +36,13 @@ FACEBOOK_ID=XXXXXXXXXX
 FACEBOOK_SECRET=XXXXXXXXXX
 
 GOOGLE_MAPS_KEY=XXXXXXXXXX
+'''
 
-1. Crie um banco de dados com o nome pubrick
+1. php artisan migrate
 
-2. php artisan migrate
+2. php artisan key:generate
 
 3. php artisan serve
+
+
+Pronto, abra o navegador e digite http://localhost:8000
