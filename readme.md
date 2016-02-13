@@ -22,7 +22,7 @@ Acesse o mysql e Crie um banco de dados com o nome **pubrick**
 ### Rodando
 
 Configure seu arquivo .env com as configuracoes do banco de dados e das credenciais do facebook
-'''
+```
 APP_ENV=local
 APP_DEBUG=true
 APP_KEY=XXXXXXXXXX
@@ -36,7 +36,7 @@ FACEBOOK_ID=XXXXXXXXXX
 FACEBOOK_SECRET=XXXXXXXXXX
 
 GOOGLE_MAPS_KEY=XXXXXXXXXX
-'''
+```
 
 1. php artisan migrate
 
