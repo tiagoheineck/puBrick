@@ -76,7 +76,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                    <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-save"> </i> Salvar</button>
                 </div>
             </div>
             {!! Form::close() !!}
