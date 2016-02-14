@@ -41,7 +41,7 @@ function initMap() {
                     var marker = new google.maps.Marker({
                         position: latLng,
                         map: map,
-                        title: 'Obra: ' + data.titulo + ' - Valor: ' + data.valor,
+                        title: 'Obra: ' + data.titulo + (data.valor>0 ?  ' - Valor: ' + data.valor : ''),
                         url: '/view/'+data.id
                     });
                     google.maps.event.addListener(marker, 'click', function() {

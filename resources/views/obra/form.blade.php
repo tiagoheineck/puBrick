@@ -14,6 +14,12 @@
             <input type="hidden" name="obra[latitude]" id="latitude" value="">
             <input type="hidden" name="obra[longitude]" id="longitude" value="">
             <div class="form-group">
+                <label for="foto" class="col-md-4 control-label">Foto <span style="color:red;"> *</span></label>
+                <div class="col-md-8">
+                    {{ Form::file('foto',array('id'=>'foto','class'=>'form-control','required'=>'required','accept'=>'image/*;capture=camera'))  }}
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="titulo" class="col-md-4 control-label">Nome da Obra <span style="color:red;"> *</span></label>
                 <div class="col-md-8">
                     <input type="text" id="titulo" name="obra[titulo]" class="form-control" required="required">
@@ -32,7 +38,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="valor" class="col-md-4 control-label">Valor total</label>
+                <label for="valor" class="col-md-4 control-label">Valor Total</label>
                 <div class="col-md-8">
                     <input type="text" id="valor" name="obra[valor]" class="form-control">
                 </div>
@@ -62,9 +68,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="foto" class="col-md-4 control-label">Foto <span style="color:red;"> *</span></label>
+                <label for="data_fim" class="col-md-4 control-label">Reportar Como</label>
                 <div class="col-md-8">
-                    {{ Form::file('foto',array('id'=>'foto','class'=>'form-control','required'=>'required','accept'=>'image/*;capture=camera'))  }}
+                    <label class="radio-inline"><input type="radio" name="anonimo" value="n" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
+                    <label class="radio-inline"><input type="radio" name="anonimo" value="S">Anônimo</label>
                 </div>
             </div>
             <div class="form-group">

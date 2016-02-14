@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content') 
+<h1>Obra: {{ $obra->titulo }}</h1>
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
@@ -29,7 +30,42 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-9">
+
+<style>
+dd {
+    color: orange;
+    padding-left: 15px;
+}
+</style>
+         <div class="col-md-4">
+             <h3>Sobre a obra</h3>
+             @if(count($obra->fotos) > 0)
+             <img src="{!! url("/foto/miniatura/{$obra->fotos->first()->foto}") !!}" class="img-thumbnail img-responsive">
+             <br><br>
+             @endif
+            <dl>
+                <dt>Órgão Responsável</dt>
+                <dd>{{ strlen($obra->orgao_responsavel) ? $obra->orgao_responsavel : "Não informado"  }}</dd>
+                <dt>Empresa Responsável</dt>
+                <dd>{{ strlen($obra->empresa_responsavel) ?  $obra->empresa_responsavel : "Não informada"}}</dd>
+                <dt>Valor Total</dt>
+                <dd>{{ $obra->valor>0 ?  $obra->valor : "Não informado"}}</dd>
+                <dt>Esfera</dt>
+                <dd>{{ strlen($obra->esfera) ?  $obra->esfera : "Não informada"}}</dd> 
+                <dt>Fiscal da Obra</dt>
+                <dd>{{ strlen($obra->fiscal_obra) ?  $obra->fiscal_obra : "Não informado"}}</dd> 
+                <dt>Data de Início</dt>
+                <dd>{{ $obra->data_inicio!='0000-00-00'?  date("d/m/Y", strtotime($obra->data_inicio)) : "Não informada"}}</dd> 
+                <dt>Previsão de Conclusão</dt>
+                <dd>{{ $obra->data_fim!='0000-00-00'? date("d/m/Y", strtotime($obra->data_fim)): "Não informada"}}</dd> 
+                <dt>Reportado por:</dt>
+                <dd>@if ($obra->user->anonymous) {{ 'Anônimo' }}  @else {{ $obra->user->name }} @endif</dd>
+                <dt>Estamos de olho desde:</dt>
+                <dd>{{ $obra->created_at }}</dd>
+            </dl>
+         </div>
+
+        <div class="col-md-8">
             <h3>Histórico</h3>
 
             @foreach($obra->comentarios as $comentario)
@@ -53,32 +89,6 @@
                 </div>
             @endforeach
         </div>
-         <div class="col-md-3">
-             <h3>Sobre a obra</h3>
-             @if(count($obra->fotos) > 0)
-             <img src="{!! url("/foto/miniatura/{$obra->fotos->first()->foto}") !!}" class="img-thumbnail img-responsive">
-             @endif
-            <dl>
-                <dt>Órgão Responsável</dt>
-                <dd>{{ $obra->orgao_responsavel }}</dd>
-                <dt>Valor</dt>
-                <dd>{{ $obra->valor }}</dd>
-                <dt>Empresa Responsável</dt>
-                <dd>{{ $obra->empresa_responsavel }}</dd>
-                <dt>esfera</dt>
-                <dd>{{ $obra->esfera }}</dd>
-                <dt>Fiscal da Obra</dt>
-                <dd>{{ $obra->fiscal_obra }}</dd>
-                <dt>Data de Início</dt>
-                <dd>{{ $obra->data_inicio }}</dd>
-                <dt>Data de Conclusão</dt>
-                <dd>{{ $obra->data_fim }}</dd>
-                <dt>Reportado por:</dt>
-                <dd>@if ($obra->user->anonymous) {{ 'Anônimo' }}  @else {{ $obra->user->name }} @endif</dd>
-                <dt>Estamos de olho desde:</dt>
-                <dd>{{ $obra->created_at }}</dd>
-            </dl>
-         </div>
     </div>
 @endsection
 

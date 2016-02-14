@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Minhas Obras Favoritas</h1>
+    <h1>Obras Favoritas</h1>
     <div class="row">
     @if(count(\Illuminate\Support\Facades\Auth::user()->favoritos) > 0 )
         <table class="table table-striped">
