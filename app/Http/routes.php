@@ -43,7 +43,10 @@ Route::group(['middleware' => ['web','auth']], function() {
     Route::post('/new',['as'=>'obra.save' , 'uses'=>'ObraController@save']);
     Route::post('/comments','ComentarioController@send');
     Route::get('/near/{latitude}/{longitude}','ObraController@proximas');
+    Route::get('/obra/{id}','ObraController@getObra');
     Route::get('/view/{id}','ObraController@porId');
+    Route::get('/edit/{id}','ObraController@getFormEdit');
+    Route::post('/edit/{id}', 'ObraController@edit');
     Route::get('/favorite/{id}','FavoritoController@set');
     Route::get('/favorite','FavoritoController@lista');
     Route::get('/denounce/{obraId}/{comentarioId?}','DenunciaController@getForm');

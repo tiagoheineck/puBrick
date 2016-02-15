@@ -56,11 +56,43 @@ class ObraController extends Controller
 
     }
 
+    public function edit(Request $request, $id)
+    {
+        $obra = Obra::findOrFail($id);
+
+        $obra->titulo = $request->input('obra.titulo');
+        $obra->orgao_responsavel = $request->input('obra.orgao_responsavel');
+        $obra->empresa_responsavel = $request->input('obra.empresa_responsavel');
+        $obra->valor = $request->input('obra.valor');
+        $obra->esfera = $request->input('obra.esfera');
+        $obra->fiscal_obra = $request->input('obra.fiscal_obra');
+        $obra->data_inicio = $request->input('obra.data_inicio');
+        $obra->data_fim = $request->input('obra.data_fim');
+
+        $obra->save();
+
+        return Redirect::to('/view/'.$obra->id)->with('mensagem','Parabéns, mais uma obra que será fiscalizada!');
+
+    }
+
     public function porId($id)
     {
         $favorito = (Favorito::where('obra_id','=',$id)->where('user_id','=',Auth::user()->id)->get()->first()) ? true : false;
         $obra = Obra::findOrFail($id);
         return view('obra.timeline',['obra'=>$obra,'favorito'=>$favorito]);
+    }
+
+    public function getObra($id)
+    {
+        $obra = Obra::findOrFail($id);
+        return response()->json(['obra'=>$obra,'state'=>200]);
+    }    
+
+    public function getFormEdit($id)
+    {
+        $obra = Obra::findOrFail($id);
+        return view('obra.form_edit',['obra'=>$obra]);
+
     }
 
 
