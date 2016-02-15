@@ -10,7 +10,7 @@
             <div id="map" style="width:100%; height:300px"></div>
         </div>
         <div class="col-md-7">
-            {!! Form::open(array('url' => 'new','file'=>'true','enctype'=>"multipart/form-data", 'class'=>'form-horizontal')) !!}
+            {!! Form::open(array('id'=>'formulario','url' => 'new','file'=>'true','enctype'=>"multipart/form-data", 'class'=>'form-horizontal')) !!}
             <input type="hidden" name="obra[latitude]" id="latitude" value="">
             <input type="hidden" name="obra[longitude]" id="longitude" value="">
             <div class="form-group">
@@ -58,7 +58,7 @@
             <div class="form-group">
                 <label for="data_inicio" class="col-md-4 control-label">Data de Início</label>
                 <div class="col-md-8">
-                    <input type="date" id="data_inicio" name="obra[data_inicio]" class="form-control" >
+                    <input type="date" id="data_inicio" name="obra[data_inicio]" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="data_fim" class="col-md-4 control-label">Reportar Como</label>
+                <label for="data_fim" class="col-md-4 control-label">Postar Como</label>
                 <div class="col-md-8">
                     <label class="radio-inline"><input type="radio" name="anonimo" value="n" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
                     <label class="radio-inline"><input type="radio" name="anonimo" value="S">Anônimo</label>
@@ -87,6 +87,20 @@
 @endsection
 
 @section('javascript')
+    <script src="{!! asset('js/jquery.maskMoney.js') !!}">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#valor").maskMoney({prefix:'R$ ', allowNegative: false, thousands:',', decimal:'.', affixesStay: true, allowZero:false});
+            @if($obra->valor > 0)
+                $("#valor").maskMoney('mask', Number({{$obra->valor}}) );
+            @endif
+            $("#formulario").submit(function( event ) {
+                $("#valor").val( $("#valor").maskMoney('unmasked')[0] );
+            });
+        });
+    </script>
 
     <script src="{!! asset('js/maps.js') !!}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={!! env('GOOGLE_MAPS_KEY') !!}&callback=initMap"

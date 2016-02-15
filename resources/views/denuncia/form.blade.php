@@ -13,7 +13,8 @@ dd {
     <div class="row">
         <div class="col-md-8 col-md-push-4">
             <div class="panel panel-default">
-                <div class="panel-heading panel-primary">Descreva o Motivo da sua Denúncia</div>
+                <div class="panel-heading panel-primary">Descreva o Motivo da sua Denúncia
+                <br/><small>Não se preocupe, todas as denúncias são anônimas.</small></div>
                 {!! Form::open(array('url' => 'denounce', 'class'=>'form-horizontal')) !!}
                 <div class="panel-body">
                     <input type="hidden" name="obra" id="obra" value="{{$obra->id}}">

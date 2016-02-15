@@ -79,6 +79,13 @@ dd {
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="data_fim" class="col-md-2 control-label">Postar Como</label>
+                        <div class="col-md-10">
+                            <label class="radio-inline"><input type="radio" name="anonimo" value="n" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
+                            <label class="radio-inline"><input type="radio" name="anonimo" value="S">Anônimo</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-12">
                             <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-send"> </i> Enviar</button>
                         </div>
