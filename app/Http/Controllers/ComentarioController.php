@@ -24,17 +24,14 @@ class ComentarioController extends Controller
         {
             $foto = app('foto')->uploadObra(Input::file('foto'), $obra); //Aqui está usando um Serviço da arquitetura
         }
-        if($request->input('comentario')){
-            $comentario = new Comentario([
-                'texto'=> $request->input('comentario'),
-            ]);
-            $comentario->obra()->associate($obra);
-            $comentario->user()->associate(Auth::user());
-            if(isset($foto))  $comentario->foto()->associate($foto);
-            $comentario->save();
-        }
+        $comentario = new Comentario($request->input('comentario'));
+        $comentario->obra()->associate($obra);
+        $comentario->user()->associate(Auth::user());
+        if(isset($foto))  $comentario->foto()->associate($foto);
+        $comentario->save();
 
-        return Redirect::to("/view/{$obra->id}")->with('mensagem','Parabéns, sua foto foi enviada com sucesso!');
+
+        return Redirect::to("/view/{$obra->id}")->with('mensagem','Parabéns por ajudar na fiscalização dessa obra!');
 
     }
 

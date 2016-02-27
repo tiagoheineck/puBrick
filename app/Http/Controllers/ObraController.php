@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comentario;
 use App\Favorito;
 use App\Foto;
 use App\Obra;
@@ -52,7 +53,11 @@ class ObraController extends Controller
             $foto = app('foto')->uploadObra(Input::file('foto'), $obra); //Aqui está usando um Serviço da arquitetura
         }
 
-        return Redirect::to('/')->with('mensagem','Parabéns, mais uma obra que será fiscalizada!');
+        $texto = "Criei essa nova obra";
+
+        $this->salvarComentario($obra, $texto, $foto, $obra->anonimo);
+
+        return Redirect::to('/view/'.$obra->id)->with('mensagem','Parabéns, mais uma obra que será fiscalizada!');
 
     }
 
@@ -71,7 +76,11 @@ class ObraController extends Controller
 
         $obra->save();
 
-        return Redirect::to('/view/'.$obra->id)->with('mensagem','Parabéns, mais uma obra que será fiscalizada!');
+        $texto = "Editei os dados da obra.";
+
+        $this->salvarComentario($obra, $texto, null, $request->input('anonimo'));
+
+        return Redirect::to('/view/'.$obra->id)->with('mensagem','Parabéns por ajudar na fiscalização dessa obra!');
 
     }
 
@@ -96,4 +105,17 @@ class ObraController extends Controller
     }
 
 
-}
+    private function salvarComentario($obra, $texto, $foto, $anonimo){
+
+        $comentario = new Comentario();
+        $comentario->texto = $texto;
+        $comentario->anonimo = $anonimo;
+        $comentario->obra()->associate($obra);
+        $comentario->user()->associate(Auth::user());
+        if (isset($foto)) $comentario->foto()->associate($foto);
+        $comentario->save();
+
+    }
+
+
+    }

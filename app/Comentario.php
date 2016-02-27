@@ -9,7 +9,7 @@ class Comentario extends Model
 
 
     protected $fillable = [
-        'obra_id', 'user_id', 'texto'
+        'obra_id', 'user_id', 'texto', 'anonimo'
     ];
 
     public function obra()

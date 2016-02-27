@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Editar Dados da Obra</h1>
+    <h1>Editar Obra</h1>
     <div class="row">
         <div class="col-md-5">
             <label>Você está editando a obra: {{$obra->titulo}}</label>
@@ -62,8 +62,8 @@
             <div class="form-group">
                 <label for="data_fim" class="col-md-4 control-label">Postar Como</label>
                 <div class="col-md-8">
-                    <label class="radio-inline"><input type="radio" name="anonimo" value="n" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
-                    <label class="radio-inline"><input type="radio" name="anonimo" value="S">Anônimo</label>
+                    <label class="radio-inline"><input type="radio" name="anonimo" value="0" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
+                    <label class="radio-inline"><input type="radio" name="anonimo" value="1">Anônimo</label>
                 </div>
             </div>
             <div class="form-group">

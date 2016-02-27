@@ -8,7 +8,7 @@ class Obra extends Model
 {
 
     protected $fillable = [
-        'orgao_responsavel', 'titulo', 'valor','empresa_responsavel','esfera','fiscal_obra','data_inicio','data_fim','latitude','longitude'
+        'orgao_responsavel', 'titulo', 'valor','empresa_responsavel','esfera','fiscal_obra','data_inicio','data_fim','latitude','longitude', 'anonimo'
     ];
 
 

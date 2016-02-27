@@ -70,8 +70,8 @@
             <div class="form-group">
                 <label for="data_fim" class="col-md-4 control-label">Postar Como</label>
                 <div class="col-md-8">
-                    <label class="radio-inline"><input type="radio" name="anonimo" value="n" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
-                    <label class="radio-inline"><input type="radio" name="anonimo" value="S">Anônimo</label>
+                    <label class="radio-inline"><input type="radio" name="obra[anonimo]" value="0" checked="cheked">{{ \Illuminate\Support\Facades\Auth::user()->name }}</label>
+                    <label class="radio-inline"><input type="radio" name="obra[anonimo]" value="1">Anônimo</label>
                 </div>
             </div>
             <div class="form-group">
