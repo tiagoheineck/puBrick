@@ -48,14 +48,18 @@ dd {
                         <dd>{{ date("d/m/Y \à\s H:i:s", strtotime($obra->created_at)) }}</dd>
                     </dl>
                 </div>
-                <div class="panel-footer">
-                    <a class="btn btn-xs btn-danger" href='{!! url("/denounce/{$obra->id}") !!}'>
-                        <span class="glyphicon glyphicon-exclamation-sign"> </span> Denunciar Abuso</a>
-                    <a class="btn btn-xs btn-warning pull-right" href='{!! url("/edit/{$obra->id}") !!}'>
+                <div class="panel-footer container-fluid">
+
+                    <a class="btn btn-xs btn-warning" href='{!! url("/edit/{$obra->id}") !!}'>
                     <span class="glyphicon glyphicon-pencil"> </span> Editar Obra</a>
-                    @if($obra->denuncias->first())
-                            <span class="label label-default">Existem denúncias a essa obra</span>
-                    @endif
+                    <div class="pull-right">
+                        <a class="btn btn-xs btn-danger pull-right" href='{!! url("/denounce/{$obra->id}") !!}'>
+                            <span class="glyphicon glyphicon-exclamation-sign"> </span> Denunciar Abuso</a>
+                        @if($obra->denuncias->first())
+                            <br/>
+                            <span class="label label-default pull-right">Existem denúncias a essa obra</span>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,18 +121,22 @@ dd {
                         @endif
                          em  <small>{{ date("d/m/Y \à\s H:i:s", strtotime($comentario->created_at)) }}</small>
                          postou:
-
-                         @if($comentario->denuncias->first())
-                             <span class="label label-default pull-right">Existem denúncias a esse comentário</span>
-                         @endif
                     </div>
                     <div class="panel-body">
-                        <a class="btn btn-danger btn-xs pull-right float" href='{!! url("/denounce/{$obra->id}/{$comentario->id}") !!}'><span class="glyphicon glyphicon-exclamation-sign"> </span> Denunciar Comentário</a>
-
                         {{ $comentario->texto }}
                         @if($comentario->foto)
                             <img src="{{ url("foto/{$comentario->foto->foto}") }}" class="img-responsive">
                         @endif
+                    </div>
+                    <div class="panel-footer container-fluid">
+                                <div class="pull-right">
+                                <a class="btn btn-danger btn-xs pull-right" href='{!! url("/denounce/{$obra->id}/{$comentario->id}") !!}'>
+                                    <span class="glyphicon glyphicon-exclamation-sign"> </span> Denunciar Comentário</a>
+                                @if($comentario->denuncias->first())
+                                    <br/>
+                                    <span class="label label-default pull-right">Existem denúncias a esse comentário</span>
+                                @endif
+                                </div>
                     </div>
                 </div>
             @endforeach
