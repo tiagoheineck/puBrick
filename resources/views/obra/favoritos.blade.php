@@ -26,7 +26,7 @@
                         <td>{{$obra->data_fim!='0000-00-00'?  date("d/m/Y", strtotime($obra->data_fim)) : "Não informada"}}</td>
                         <td>
                         <a href='{!! url("/view/{$obra->id}") !!}' class="btn btn-xs btn-primary"><span class="glyphicon  glyphicon-eye-open" aria-hidden="true"> </span> Visualizar</a>
-                        <a href='{!! url("/favorite/{$obra->id}") !!}' class="btn btn-xs btn-warning"><span class="glyphicon  glyphicon-remove-circle" aria-hidden="true"> </span> Retirar dos Favoritos</a></td>
+                        <a href='{!! url("/favorite/{$obra->id}") !!}' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"> </span> Retirar dos Favoritos</a></td>
                     </tr>
                 @endforeach
             </tbody>

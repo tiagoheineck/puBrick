@@ -40,8 +40,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    puBrick!
+                <a class="navbar-brand" href="{{ url('/') }}" style="">
+                    <img src="/foto/logo_peq.png" alt="puBrick!" style="margin-top:-5px"/>
                 </a>
             </div>
 

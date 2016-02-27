@@ -71,7 +71,7 @@ dd {
                         <dt>Empresa Responsável</dt>
                         <dd>{{ strlen($obra->empresa_responsavel) ?  $obra->empresa_responsavel : "Não informada"}}</dd>
                         <dt>Valor Total</dt>
-                        <dd>{{ $obra->valor>0 ?  $obra->valor : "Não informado"}}</dd>
+                        <dd>{{ $obra->valor>0 ?  'R$ ' . number_format($obra->valor, 2, '.', ',') : "Não informado"}}</dd>
                         <dt>Esfera</dt>
                         <dd>{{ strlen($obra->esfera) ?  $obra->esfera : "Não informada"}}</dd> 
                         <dt>Fiscal da Obra</dt>
