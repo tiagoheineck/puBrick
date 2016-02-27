@@ -63,10 +63,8 @@ dd {
         <div class="col-md-4 col-md-pull-8">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @if(count($obra->fotos) > 0)
-                        <img src="{!! url("/foto/miniatura/{$obra->fotos->first()->foto}") !!}" class="img-thumbnail img-responsive">
-                        <br><br>
-                    @endif
+                    <div id="map" style="width:100%; height:300px"></div>
+                    <br>
                     <dl>
                         <dt>Órgão Responsável</dt>
                         <dd>{{ strlen($obra->orgao_responsavel) ? $obra->orgao_responsavel : "Não informado"  }}</dd>
@@ -83,7 +81,7 @@ dd {
                         <dt>Previsão de Conclusão</dt>
                         <dd>{{ $obra->data_fim!='0000-00-00'? date("d/m/Y", strtotime($obra->data_fim)): "Não informada"}}</dd> 
                         <dt>Reportado por:</dt>
-                        <dd>@if ($obra->user->anonymous) {{ 'Anônimo' }}  @else {{ $obra->user->name }} @endif</dd>
+                        <dd>@if ($obra->anonimo) {{ 'Anônimo' }}  @else {{ $obra->user->name }} @endif</dd>
                         <dt>Estamos de olho desde:</dt>
                         <dd>{{ date("d/m/Y \à\s H:i:s", strtotime($obra->created_at)) }}</dd>
                     </dl>
@@ -93,4 +91,19 @@ dd {
     </div>
 
 </div>
+@endsection
+
+@section('javascript')
+    <script src="{!! asset('js/maps-view.js') !!}">
+    </script>
+
+    <script type="text/javascript">
+        function prepareMap(){
+            return initMap({{ $obra->id }});
+        };
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key={!! env('GOOGLE_MAPS_KEY') !!}&callback=prepareMap"
+                async defer>
+    </script>
 @endsection

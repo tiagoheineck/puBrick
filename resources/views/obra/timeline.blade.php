@@ -9,19 +9,22 @@ dd {
 </style>
 
 <div class="container">
-<h1>Obra: {{ $obra->titulo }} </h1>
+    <h1>Obra: {{ $obra->titulo }}
+        <div class="btn-group">
+            <a  href='{!! url("/favorite/{$obra->id}") !!}'
+                class="btn btn-xs @if($favorito) {{"btn-default"}} @else {{"btn-success"}} @endif ">
+                @if($favorito)
+                    <span class="glyphicon glyphicon-star-empty"> </span> Retirar dos Favoritos
+                @else
+                    <span class="glyphicon glyphicon-star"> </span> Adicionar aos Favoritos
+                @endif
+            </a>
+        </div>
+    </h1>
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a  href='{!! url("/favorite/{$obra->id}") !!}' 
-                        class="pull-right btn btn-xs @if($favorito) {{"btn-default"}} @else {{"btn-success"}} @endif ">
-                        @if($favorito)
-                            <span class="glyphicon glyphicon-star-empty"> </span> Retirar dos Favoritos
-                        @else
-                            <span class="glyphicon glyphicon-star"> </span> Adicionar aos Favoritos
-                        @endif
-                    </a>
                     <div id="map" style="width:100%; height:300px"></div>
                     <br>
                     <dl>
