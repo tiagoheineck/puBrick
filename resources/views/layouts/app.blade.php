@@ -41,7 +41,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}" style="">
-                    <img src="/foto/logo_peq.png" alt="puBrick!" style="margin-top:-5px"/>
+                    <img src="/logop.png" alt="puBrick!" style="margin-top:-5px"/>
                 </a>
             </div>
 
