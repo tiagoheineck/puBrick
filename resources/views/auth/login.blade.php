@@ -6,7 +6,16 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    Algo sobre o Pubrick Aqui
+                    <div class="col-md-6">
+                    <img src="/img-pubrick.png" class="img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                    <p>Imagine uma aplicação intuitiva, fácil de usar e super prática onde é possível, como cidadão consciente, acompanhar as obras públicas da sua cidade e cadastrar novas obras para que todos possam acompanhar também. É disso que se trata o puBrick!
+                    </p>
+                    <p>De repente você está no caminho para o trabalho ou num passeio de bike pelo seu bairro e encontra uma obra em andamento... aí você paaah! Tira aquela foto com seu smartphone, registra e pubrica* simples assim e através dessa aplicação outros podem saber em que estado se encontra a obra: sua data de início, fim, custo, responsável, localizar no seu GPS, visualizar as fotos da obra e inclusive colaborar com mais imagens e informações. Não é legal?!
+                    </p>
+                    <p><b>*pu.bri.car</b> v.t.d <b>1</b>. Tornar “púbrico”, notório <b>2</b>. Dar conhecimento de (lei, decreto, obra, fofoca, etc.) <b>3</b>. publicar + tijolo (do inglês “brick”) = puBrick.</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -34,8 +34,8 @@ class ObraController extends Controller
         $variacao = 0.022;
         $obrasProximas = DB::table('obras')
             ->select('id','titulo','latitude','longitude','valor','orgao_responsavel')
-            ->whereBetween('latitude',array($latitude-$variacao,$latitude+$variacao))
-            ->whereBetween('longitude',array($longitude-$variacao,$longitude+$variacao))
+            //->whereBetween('latitude',array($latitude-$variacao,$latitude+$variacao))
+            //->whereBetween('longitude',array($longitude-$variacao,$longitude+$variacao))
             ->get();
         return response()->json(['data'=>$obrasProximas,'state'=>200])->setCallback($request->input('callback'));
     }
