@@ -112,11 +112,11 @@ dd {
                             @if(strlen($comentario->user->avatar) > 0 )
                                 <img src="{{ $comentario->user->avatar }}" class="perfil"> 
                             @else
-                                <img src="http://cdn-9chat-fun.9cache.com/static/dist/images/avatar-default.png" class="perfil"> 
+                                <img src="/user-icon.png" class="perfil">
                             @endif
                             <b>{{ $comentario->user->name }}</b>
                         @else
-                            <img src="http://cdn-9chat-fun.9cache.com/static/dist/images/avatar-default.png" class="perfil"> 
+                            <img src="/user-icon.png" class="perfil">
                             <b>{{ "Anônimo" }}</b>
                         @endif
                          em  <small>{{ date("d/m/Y \à\s H:i:s", strtotime($comentario->created_at)) }}</small>
