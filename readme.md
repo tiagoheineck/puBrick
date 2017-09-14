@@ -7,6 +7,7 @@
 - https://laravel.com/docs/5.2
 - https://laravelcollective.com/
 
+Trabalho realizado em disciplina de mestrado.
 
 
 ### Clonando
